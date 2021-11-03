@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo Grabbing image from $IMAGE_URI
+      - echo Deploying Lambda function to $LAMBDA_FUNCTION_NAME
+      - aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --image-uri $IMAGE_URI
+      - aws lambda wait function-updated --function-name $LAMBDA_FUNCTION_NAME
